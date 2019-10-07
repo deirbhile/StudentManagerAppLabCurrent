@@ -36,11 +36,11 @@ public class Menu {
 		System.out.println("(2) Add a Student.");
 		System.out.println("(3) Delete a Student.");
 		System.out.println("(4) Search for a Student by ID.");
-		System.out.println("(5) Search for Students by Firt Name.");
+		System.out.println("(5) Search for Students by First Name.");
 		System.out.println("(6) Show total Number of Students.");
 		System.out.println("(7) Save DB.");
 		System.out.println("(8) Quit.");
-		System.out.println("Select an option [1-6]>");
+		System.out.println("Select an option [1-8]>");
 	}
 
 	private void selectOption(int userSelection) {

@@ -2,7 +2,6 @@ package ie.gmit.studentmanager;
 
 import java.util.List;
 import java.util.ArrayList;
-import java.util.Iterator;
 
 public class StudentManager {
 
@@ -26,9 +25,16 @@ public class StudentManager {
 	}
 
 	public boolean addStudent(Student student) {
+		try {
 		// Using Collections add method. It returns true if this collection
 		// changed as a result of the call
 		return studentList.add(student);
+		}catch (Exception exceptionObject) {
+			System.out.println(exceptionObject);
+			exceptionObject.printStackTrace();
+			return false;
+			
+		}
 	}
 
 	public boolean deleteStudent(Student student) {
@@ -67,24 +73,24 @@ public class StudentManager {
 //		}
 
 		// 2. Advanced For Loop
-//		for (Student student : studentList) {
-//			// No need to check for null as ArrayList is dynamic and fills holes
-//			if (student.getStudentId().equals(studentId)) {
-//				return student;
-//			}
-//		}
+       	for (Student student : studentList) {
+			// No need to check for null as ArrayList is dynamic and fills holes
+			if (student.getStudentId().equals(studentId)) {
+				return student;
+		}
+		}
 
 		// 3. Iterator
-		Iterator<Student> studentIterator = studentList.iterator();
-		Student studentObjectHolder;
-		while (studentIterator.hasNext()) {
-			// Store next Student
-			studentObjectHolder = studentIterator.next(); 
+	//	Iterator<Student> studentIterator = studentList.iterator();
+	//	Student studentObjectHolder;
+	//	while (studentIterator.hasNext()) {
+		//	// Store next Student
+			//studentObjectHolder = studentIterator.next(); 
 			// Check if studentId equals that of current student object
-			if (studentObjectHolder.getStudentId().equals(studentId)) {
-				return studentObjectHolder;
-			}
-		}
+			//if (studentObjectHolder.getStudentId().equals(studentId)) {
+				//return studentObjectHolder;
+			//}
+		//}
 
 		// Return null if Student ID was not found
 		return null;
