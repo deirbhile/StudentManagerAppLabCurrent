@@ -1,6 +1,11 @@
 package ie.gmit.studentmanager;
 
 import java.util.List;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class StudentManager {
@@ -115,6 +120,27 @@ public class StudentManager {
 		// If no students were found with that first name then return null
 		return null;
 	}
+	public void loadStudentFile(String pathToFile) {
+		File inFile = new File(pathToFile);
+		FileReader fileReader = null;
+		BufferedReader br = null;
+		String data = null;
+		try {
+		fileReader = new FileReader(inFile);
+		br = new BufferedReader(fileReader);
+		while((data = br.readLine()) != null) {
+			Student newStudent = new Student(data);
+			this.addStudent(newStudent);
+		}
+		
+		}catch(FileNotFoundException fnf) {
+			fnf.printStackTrace();
+		}catch (IOException io) {
+			io.printStackTrace();
+		}
+		
+	}
+
 
 	public int findTotalStudents() {
 		// returns the current number of Students in the ArrayList
